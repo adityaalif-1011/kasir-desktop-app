@@ -1,31 +1,39 @@
 package db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class Koneksi {
 
-    public static Connection getConnection(){
+public static Connection getConnection(){
 
-        try{
-            String url="jdbc:mysql://localhost:3306/kasir_db";
-            String user="root";
-            String password="";
+try{
 
-            Connection conn=
-                DriverManager.getConnection(
-                    url,
-                    user,
-                    password
-                );
+Class.forName(
+"com.mysql.cj.jdbc.Driver"
+);
 
-            return conn;
+Connection conn =
+DriverManager.getConnection(
+"jdbc:mysql://127.0.0.1:3306/kasir_db?useSSL=false&serverTimezone=UTC",
+"root",
+"adit10"
+);
 
-        }catch(Exception e){
-            System.out.println(e);
-            return null;
-        }
+System.out.println(
+"CONNECTED MYSQL"
+);
 
-    }
+return conn;
+
+}
+catch(Exception e){
+
+e.printStackTrace();
+
+return null;
+
+}
+
+}
 
 }
